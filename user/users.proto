@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+package users;
+option go_package="./users";
+
+service Users {
+  rpc MerchantLogin(MerchantLoginRequest) returns(MerchantLoginResponse);
+  rpc SendSms(SendSmsRequest) returns(SendSmsResponse);
+  rpc AddGood(AddGoodRequest) returns(AddGoodResponse);
+  rpc DelGood(DelGoodRequest) returns(DelGoodResponse);
+  rpc IsHot(IsHotRequest) returns(IsHotResponse);
+  rpc GoodsList(GoodsListRequest) returns(GoodsListResponse);
+  rpc UpStockMessage(UpStockMessageRequest) returns(UpStockMessageResponse);
+  rpc OrderList(OrderListRequest) returns(OrderListResponse);
+}
+
+message OrderListRequest {
+  int64 page = 1;
+  int64 size = 2;
+  string orderNo = 3;
+}
+
+message OrderListResponse {
+  repeated OrderList orderList = 1;
+}
+
+message OrderList {
+  string  OrderNo = 1;
+  int64   UserID = 2;
+  int64   MerchantID = 3;
+  float   TotalAmount = 4;
+  int64   Status = 5;
+  int64   ProductID = 6;
+  string  ProductName = 7;
+  string  ProductImage = 8;
+  float   Price = 9;
+  int64   Num = 10;
+  float   TotalPrice = 11;
+}
+message UpStockMessageRequest {
+  int64 StockNum = 1;
+  int64 StockId = 2;
+  int64 GoodsId = 3;
+}
+
+message UpStockMessageResponse {
+ bool success = 1;
+}
+message GoodsListRequest {
+ int64 page = 1;
+ int64 size = 2;
+}
+
+message GoodsListResponse {
+  repeated GoodsList userList = 1;
+}
+message GoodsList {
+  int64  UserId = 1;
+  string Name = 2;
+  float  Price = 3;
+  int64  Status = 4;
+  string Description = 5;
+  int64  StockId= 6;
+  int64  Types  = 7;
+  int64  IsHot= 8;
+  int64  Stock =9;
+  string Supplier =10;
+  int64  StockNum =11;
+  string StockAddress =12;
+  string StockUnit =13;
+  float  StockPrice =14;
+  int64  StockStatus =15;
+}
+
+message IsHotRequest {
+  int64  UserId = 1;
+  int64 GoodsId = 2;
+}
+
+message IsHotResponse {
+  bool success = 1;
+}
+
+message DelGoodRequest {
+  int64  UserId = 1;
+  int64 GoodsId = 2;
+}
+
+message DelGoodResponse {
+  bool success = 1;
+}
+message Image {
+  string Url = 1;
+  string GoodsId =2;
+}
+message AddGoodRequest {
+  int64  UserId = 1;
+  string Name= 2;
+  float  Price= 3;
+  int64  Status= 4;
+  string Description= 5;
+  int64  StockId= 6;
+  int64  Types= 7;
+ repeated Image Image= 8;
+}
+
+message AddGoodResponse {
+  bool success = 1;
+}
+
+
+message SendSmsRequest {
+  string mobile = 1;
+}
+
+message SendSmsResponse {
+  bool success = 1;
+}
+
+message MerchantLoginRequest {
+  string Account  = 1;
+  string Password  = 2;
+  string Mobile  = 3;
+  string Code  = 4;
+  int64 types = 5;
+}
+
+message MerchantLoginResponse {
+ int64 userId = 1;
+}
+

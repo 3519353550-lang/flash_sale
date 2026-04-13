@@ -1,0 +1,99 @@
+syntax = "v1"
+
+info (
+	author: "sijiashuai"
+	email:  "3519353550@qq.com"
+)
+
+type Response {
+	Data interface{} `json:"data"`
+	Code int64       `json:"code"`
+	Msg  string      `json:"msg"`
+}
+
+type SendSmsRequest {
+	Mobile string `json:"mobile"`
+}
+
+type MerchantLoginRequest {
+	Mobile   string `json:"mobile"`
+	Code     string `json:"code"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Types    int64  `json:"types"`
+}
+
+type UploadRequest {}
+
+type Image {
+	Url     string `json:"url"`
+	GoodsId string `json:"goodsId"`
+}
+
+type AddGoodRequest {
+	UserId      int64   `json:"userId"`
+	Name        string  `json:"name"`
+	Price       float64 `json:"price"`
+	Status      int64   `json:"status"`
+	Description string  `json:"description"`
+	StockId     int64   `json:"stockId"`
+	Types       int64   `json:"types"`
+	Images      []Image `json:"image"`
+}
+
+type DelGoodRequest {
+	UserId  int64 `json:"userId"`
+	GoodsId int64 `json:"goodsId"`
+}
+
+type IsHotRequest {
+	UserId  int64 `json:"userId"`
+	GoodsId int64 `json:"goodsId"`
+}
+
+type GoodsListRequest {
+	page int64 `json:"page"`
+	size int64 `json:"size"`
+}
+
+type UpStockMessageRequest {
+	StockNum int64 `json:"stockNum"`
+	StockId  int64 `json:"stockId"`
+	GoodsId  int64 `json:"goodsId"`
+}
+
+type OrderListRequest {
+	page    int64  `json:"page"`
+	size    int64  `json:"size"`
+	orderNo string `json:"orderNo"`
+}
+
+service api {
+	@handler OrderList // TODO: set handler name and delete this comment
+	post /orderList (OrderListRequest) returns (Response)
+
+	@handler UpStockMessage // TODO: set handler name and delete this comment
+	post /upstock/message (UpStockMessageRequest) returns (Response)
+
+	@handler GoodsList // TODO: set handler name and delete this comment
+	post /goods/list (GoodsListRequest) returns (Response)
+
+	@handler IsHot // TODO: set handler name and delete this comment
+	post /is/hot (IsHotRequest) returns (Response)
+
+	@handler DelGood // TODO: set handler name and delete this comment
+	post /del/good (DelGoodRequest) returns (Response)
+
+	@handler AddGood // TODO: set handler name and delete this comment
+	post /add/good (AddGoodRequest) returns (Response)
+
+	@handler SendSms // TODO: set handler name and delete this comment
+	post /sms/send (SendSmsRequest) returns (Response)
+
+	@handler MerchantLogin // TODO: set handler name and delete this comment
+	post /merchant/login (MerchantLoginRequest) returns (Response)
+
+	@handler Upload // TODO: set handler name and delete this comment
+	post /upload (UploadRequest) returns (Response)
+}
+

@@ -1,0 +1,8 @@
+NaCos:
+  Host: "180.184.29.130"    #服务器地址
+  Port: 8848                #端口号
+  Namespace: "public"        #账号
+  Group: "DEFAULT_GROUP"
+  DataId: "configs"
+  Username: "nacos"
+  Password: "4ay1nkal3u8ed77y"     #密码
