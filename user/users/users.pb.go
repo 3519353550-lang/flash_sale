@@ -21,6 +21,454 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type PurchaseGood struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GoodId        int64                  `protobuf:"varint,1,opt,name=goodId,proto3" json:"goodId,omitempty"`
+	Quantity      int64                  `protobuf:"varint,2,opt,name=Quantity,proto3" json:"Quantity,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PurchaseGood) Reset() {
+	*x = PurchaseGood{}
+	mi := &file_users_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PurchaseGood) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PurchaseGood) ProtoMessage() {}
+
+func (x *PurchaseGood) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PurchaseGood.ProtoReflect.Descriptor instead.
+func (*PurchaseGood) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *PurchaseGood) GetGoodId() int64 {
+	if x != nil {
+		return x.GoodId
+	}
+	return 0
+}
+
+func (x *PurchaseGood) GetQuantity() int64 {
+	if x != nil {
+		return x.Quantity
+	}
+	return 0
+}
+
+type PurchaseGoodRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PurchaseGoods []*PurchaseGood        `protobuf:"bytes,1,rep,name=purchaseGoods,proto3" json:"purchaseGoods,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=UserId,proto3" json:"UserId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PurchaseGoodRequest) Reset() {
+	*x = PurchaseGoodRequest{}
+	mi := &file_users_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PurchaseGoodRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PurchaseGoodRequest) ProtoMessage() {}
+
+func (x *PurchaseGoodRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PurchaseGoodRequest.ProtoReflect.Descriptor instead.
+func (*PurchaseGoodRequest) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *PurchaseGoodRequest) GetPurchaseGoods() []*PurchaseGood {
+	if x != nil {
+		return x.PurchaseGoods
+	}
+	return nil
+}
+
+func (x *PurchaseGoodRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+type PurchaseGoodResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	OrderNo       string                 `protobuf:"bytes,1,opt,name=orderNo,proto3" json:"orderNo,omitempty"`
+	TotalPrice    float32                `protobuf:"fixed32,2,opt,name=TotalPrice,proto3" json:"TotalPrice,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PurchaseGoodResponse) Reset() {
+	*x = PurchaseGoodResponse{}
+	mi := &file_users_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PurchaseGoodResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PurchaseGoodResponse) ProtoMessage() {}
+
+func (x *PurchaseGoodResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PurchaseGoodResponse.ProtoReflect.Descriptor instead.
+func (*PurchaseGoodResponse) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *PurchaseGoodResponse) GetOrderNo() string {
+	if x != nil {
+		return x.OrderNo
+	}
+	return ""
+}
+
+func (x *PurchaseGoodResponse) GetTotalPrice() float32 {
+	if x != nil {
+		return x.TotalPrice
+	}
+	return 0
+}
+
+type GoodsDetailedRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GoodId        int64                  `protobuf:"varint,1,opt,name=goodId,proto3" json:"goodId,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GoodsDetailedRequest) Reset() {
+	*x = GoodsDetailedRequest{}
+	mi := &file_users_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GoodsDetailedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GoodsDetailedRequest) ProtoMessage() {}
+
+func (x *GoodsDetailedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GoodsDetailedRequest.ProtoReflect.Descriptor instead.
+func (*GoodsDetailedRequest) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GoodsDetailedRequest) GetGoodId() int64 {
+	if x != nil {
+		return x.GoodId
+	}
+	return 0
+}
+
+type GoodsDetailedResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Goods         *GoodsList             `protobuf:"bytes,1,opt,name=goods,proto3" json:"goods,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GoodsDetailedResponse) Reset() {
+	*x = GoodsDetailedResponse{}
+	mi := &file_users_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GoodsDetailedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GoodsDetailedResponse) ProtoMessage() {}
+
+func (x *GoodsDetailedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GoodsDetailedResponse.ProtoReflect.Descriptor instead.
+func (*GoodsDetailedResponse) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GoodsDetailedResponse) GetGoods() *GoodsList {
+	if x != nil {
+		return x.Goods
+	}
+	return nil
+}
+
+type SearchGoodsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=Name,proto3" json:"Name,omitempty"`
+	Types         int64                  `protobuf:"varint,2,opt,name=Types,proto3" json:"Types,omitempty"`
+	MaxPrice      float32                `protobuf:"fixed32,3,opt,name=MaxPrice,proto3" json:"MaxPrice,omitempty"`
+	MinPrice      float32                `protobuf:"fixed32,4,opt,name=MinPrice,proto3" json:"MinPrice,omitempty"`
+	Sales         int64                  `protobuf:"varint,5,opt,name=Sales,proto3" json:"Sales,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchGoodsRequest) Reset() {
+	*x = SearchGoodsRequest{}
+	mi := &file_users_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchGoodsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchGoodsRequest) ProtoMessage() {}
+
+func (x *SearchGoodsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchGoodsRequest.ProtoReflect.Descriptor instead.
+func (*SearchGoodsRequest) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *SearchGoodsRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *SearchGoodsRequest) GetTypes() int64 {
+	if x != nil {
+		return x.Types
+	}
+	return 0
+}
+
+func (x *SearchGoodsRequest) GetMaxPrice() float32 {
+	if x != nil {
+		return x.MaxPrice
+	}
+	return 0
+}
+
+func (x *SearchGoodsRequest) GetMinPrice() float32 {
+	if x != nil {
+		return x.MinPrice
+	}
+	return 0
+}
+
+func (x *SearchGoodsRequest) GetSales() int64 {
+	if x != nil {
+		return x.Sales
+	}
+	return 0
+}
+
+type SearchGoodsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SearchGoods   []*SearchGoods         `protobuf:"bytes,1,rep,name=searchGoods,proto3" json:"searchGoods,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchGoodsResponse) Reset() {
+	*x = SearchGoodsResponse{}
+	mi := &file_users_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchGoodsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchGoodsResponse) ProtoMessage() {}
+
+func (x *SearchGoodsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchGoodsResponse.ProtoReflect.Descriptor instead.
+func (*SearchGoodsResponse) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *SearchGoodsResponse) GetSearchGoods() []*SearchGoods {
+	if x != nil {
+		return x.SearchGoods
+	}
+	return nil
+}
+
+type SearchGoods struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	GoodsId       int64                  `protobuf:"varint,1,opt,name=GoodsId,proto3" json:"GoodsId,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=Name,proto3" json:"Name,omitempty"`
+	Price         float32                `protobuf:"fixed32,3,opt,name=Price,proto3" json:"Price,omitempty"`
+	Types         int64                  `protobuf:"varint,4,opt,name=Types,proto3" json:"Types,omitempty"`
+	Sales         int64                  `protobuf:"varint,5,opt,name=Sales,proto3" json:"Sales,omitempty"`
+	Status        int64                  `protobuf:"varint,6,opt,name=Status,proto3" json:"Status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SearchGoods) Reset() {
+	*x = SearchGoods{}
+	mi := &file_users_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SearchGoods) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SearchGoods) ProtoMessage() {}
+
+func (x *SearchGoods) ProtoReflect() protoreflect.Message {
+	mi := &file_users_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SearchGoods.ProtoReflect.Descriptor instead.
+func (*SearchGoods) Descriptor() ([]byte, []int) {
+	return file_users_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SearchGoods) GetGoodsId() int64 {
+	if x != nil {
+		return x.GoodsId
+	}
+	return 0
+}
+
+func (x *SearchGoods) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *SearchGoods) GetPrice() float32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *SearchGoods) GetTypes() int64 {
+	if x != nil {
+		return x.Types
+	}
+	return 0
+}
+
+func (x *SearchGoods) GetSales() int64 {
+	if x != nil {
+		return x.Sales
+	}
+	return 0
+}
+
+func (x *SearchGoods) GetStatus() int64 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
 type OrderListRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Page          int64                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
@@ -32,7 +480,7 @@ type OrderListRequest struct {
 
 func (x *OrderListRequest) Reset() {
 	*x = OrderListRequest{}
-	mi := &file_users_proto_msgTypes[0]
+	mi := &file_users_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -44,7 +492,7 @@ func (x *OrderListRequest) String() string {
 func (*OrderListRequest) ProtoMessage() {}
 
 func (x *OrderListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[0]
+	mi := &file_users_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +505,7 @@ func (x *OrderListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderListRequest.ProtoReflect.Descriptor instead.
 func (*OrderListRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{0}
+	return file_users_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *OrderListRequest) GetPage() int64 {
@@ -90,7 +538,7 @@ type OrderListResponse struct {
 
 func (x *OrderListResponse) Reset() {
 	*x = OrderListResponse{}
-	mi := &file_users_proto_msgTypes[1]
+	mi := &file_users_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -102,7 +550,7 @@ func (x *OrderListResponse) String() string {
 func (*OrderListResponse) ProtoMessage() {}
 
 func (x *OrderListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[1]
+	mi := &file_users_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -115,7 +563,7 @@ func (x *OrderListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderListResponse.ProtoReflect.Descriptor instead.
 func (*OrderListResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{1}
+	return file_users_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *OrderListResponse) GetOrderList() []*OrderList {
@@ -144,7 +592,7 @@ type OrderList struct {
 
 func (x *OrderList) Reset() {
 	*x = OrderList{}
-	mi := &file_users_proto_msgTypes[2]
+	mi := &file_users_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -156,7 +604,7 @@ func (x *OrderList) String() string {
 func (*OrderList) ProtoMessage() {}
 
 func (x *OrderList) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[2]
+	mi := &file_users_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -169,7 +617,7 @@ func (x *OrderList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OrderList.ProtoReflect.Descriptor instead.
 func (*OrderList) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{2}
+	return file_users_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *OrderList) GetOrderNo() string {
@@ -260,7 +708,7 @@ type UpStockMessageRequest struct {
 
 func (x *UpStockMessageRequest) Reset() {
 	*x = UpStockMessageRequest{}
-	mi := &file_users_proto_msgTypes[3]
+	mi := &file_users_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -272,7 +720,7 @@ func (x *UpStockMessageRequest) String() string {
 func (*UpStockMessageRequest) ProtoMessage() {}
 
 func (x *UpStockMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[3]
+	mi := &file_users_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -285,7 +733,7 @@ func (x *UpStockMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpStockMessageRequest.ProtoReflect.Descriptor instead.
 func (*UpStockMessageRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{3}
+	return file_users_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *UpStockMessageRequest) GetStockNum() int64 {
@@ -318,7 +766,7 @@ type UpStockMessageResponse struct {
 
 func (x *UpStockMessageResponse) Reset() {
 	*x = UpStockMessageResponse{}
-	mi := &file_users_proto_msgTypes[4]
+	mi := &file_users_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -330,7 +778,7 @@ func (x *UpStockMessageResponse) String() string {
 func (*UpStockMessageResponse) ProtoMessage() {}
 
 func (x *UpStockMessageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[4]
+	mi := &file_users_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -343,7 +791,7 @@ func (x *UpStockMessageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpStockMessageResponse.ProtoReflect.Descriptor instead.
 func (*UpStockMessageResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{4}
+	return file_users_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *UpStockMessageResponse) GetSuccess() bool {
@@ -363,7 +811,7 @@ type GoodsListRequest struct {
 
 func (x *GoodsListRequest) Reset() {
 	*x = GoodsListRequest{}
-	mi := &file_users_proto_msgTypes[5]
+	mi := &file_users_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -375,7 +823,7 @@ func (x *GoodsListRequest) String() string {
 func (*GoodsListRequest) ProtoMessage() {}
 
 func (x *GoodsListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[5]
+	mi := &file_users_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -388,7 +836,7 @@ func (x *GoodsListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GoodsListRequest.ProtoReflect.Descriptor instead.
 func (*GoodsListRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{5}
+	return file_users_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GoodsListRequest) GetPage() int64 {
@@ -414,7 +862,7 @@ type GoodsListResponse struct {
 
 func (x *GoodsListResponse) Reset() {
 	*x = GoodsListResponse{}
-	mi := &file_users_proto_msgTypes[6]
+	mi := &file_users_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -426,7 +874,7 @@ func (x *GoodsListResponse) String() string {
 func (*GoodsListResponse) ProtoMessage() {}
 
 func (x *GoodsListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[6]
+	mi := &file_users_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -439,7 +887,7 @@ func (x *GoodsListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GoodsListResponse.ProtoReflect.Descriptor instead.
 func (*GoodsListResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{6}
+	return file_users_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *GoodsListResponse) GetUserList() []*GoodsList {
@@ -472,7 +920,7 @@ type GoodsList struct {
 
 func (x *GoodsList) Reset() {
 	*x = GoodsList{}
-	mi := &file_users_proto_msgTypes[7]
+	mi := &file_users_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -484,7 +932,7 @@ func (x *GoodsList) String() string {
 func (*GoodsList) ProtoMessage() {}
 
 func (x *GoodsList) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[7]
+	mi := &file_users_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -497,7 +945,7 @@ func (x *GoodsList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GoodsList.ProtoReflect.Descriptor instead.
 func (*GoodsList) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{7}
+	return file_users_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *GoodsList) GetUserId() int64 {
@@ -615,7 +1063,7 @@ type IsHotRequest struct {
 
 func (x *IsHotRequest) Reset() {
 	*x = IsHotRequest{}
-	mi := &file_users_proto_msgTypes[8]
+	mi := &file_users_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -627,7 +1075,7 @@ func (x *IsHotRequest) String() string {
 func (*IsHotRequest) ProtoMessage() {}
 
 func (x *IsHotRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[8]
+	mi := &file_users_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -640,7 +1088,7 @@ func (x *IsHotRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IsHotRequest.ProtoReflect.Descriptor instead.
 func (*IsHotRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{8}
+	return file_users_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *IsHotRequest) GetUserId() int64 {
@@ -666,7 +1114,7 @@ type IsHotResponse struct {
 
 func (x *IsHotResponse) Reset() {
 	*x = IsHotResponse{}
-	mi := &file_users_proto_msgTypes[9]
+	mi := &file_users_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -678,7 +1126,7 @@ func (x *IsHotResponse) String() string {
 func (*IsHotResponse) ProtoMessage() {}
 
 func (x *IsHotResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[9]
+	mi := &file_users_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -691,7 +1139,7 @@ func (x *IsHotResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IsHotResponse.ProtoReflect.Descriptor instead.
 func (*IsHotResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{9}
+	return file_users_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *IsHotResponse) GetSuccess() bool {
@@ -711,7 +1159,7 @@ type DelGoodRequest struct {
 
 func (x *DelGoodRequest) Reset() {
 	*x = DelGoodRequest{}
-	mi := &file_users_proto_msgTypes[10]
+	mi := &file_users_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -723,7 +1171,7 @@ func (x *DelGoodRequest) String() string {
 func (*DelGoodRequest) ProtoMessage() {}
 
 func (x *DelGoodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[10]
+	mi := &file_users_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -736,7 +1184,7 @@ func (x *DelGoodRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DelGoodRequest.ProtoReflect.Descriptor instead.
 func (*DelGoodRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{10}
+	return file_users_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *DelGoodRequest) GetUserId() int64 {
@@ -762,7 +1210,7 @@ type DelGoodResponse struct {
 
 func (x *DelGoodResponse) Reset() {
 	*x = DelGoodResponse{}
-	mi := &file_users_proto_msgTypes[11]
+	mi := &file_users_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -774,7 +1222,7 @@ func (x *DelGoodResponse) String() string {
 func (*DelGoodResponse) ProtoMessage() {}
 
 func (x *DelGoodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[11]
+	mi := &file_users_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -787,7 +1235,7 @@ func (x *DelGoodResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DelGoodResponse.ProtoReflect.Descriptor instead.
 func (*DelGoodResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{11}
+	return file_users_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *DelGoodResponse) GetSuccess() bool {
@@ -807,7 +1255,7 @@ type Image struct {
 
 func (x *Image) Reset() {
 	*x = Image{}
-	mi := &file_users_proto_msgTypes[12]
+	mi := &file_users_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -819,7 +1267,7 @@ func (x *Image) String() string {
 func (*Image) ProtoMessage() {}
 
 func (x *Image) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[12]
+	mi := &file_users_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -832,7 +1280,7 @@ func (x *Image) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Image.ProtoReflect.Descriptor instead.
 func (*Image) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{12}
+	return file_users_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *Image) GetUrl() string {
@@ -858,6 +1306,7 @@ type AddGoodRequest struct {
 	Description   string                 `protobuf:"bytes,5,opt,name=Description,proto3" json:"Description,omitempty"`
 	StockId       int64                  `protobuf:"varint,6,opt,name=StockId,proto3" json:"StockId,omitempty"`
 	Types         int64                  `protobuf:"varint,7,opt,name=Types,proto3" json:"Types,omitempty"`
+	IsHot         int64                  `protobuf:"varint,9,opt,name=IsHot,proto3" json:"IsHot,omitempty"`
 	Image         []*Image               `protobuf:"bytes,8,rep,name=Image,proto3" json:"Image,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -865,7 +1314,7 @@ type AddGoodRequest struct {
 
 func (x *AddGoodRequest) Reset() {
 	*x = AddGoodRequest{}
-	mi := &file_users_proto_msgTypes[13]
+	mi := &file_users_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -877,7 +1326,7 @@ func (x *AddGoodRequest) String() string {
 func (*AddGoodRequest) ProtoMessage() {}
 
 func (x *AddGoodRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[13]
+	mi := &file_users_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -890,7 +1339,7 @@ func (x *AddGoodRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGoodRequest.ProtoReflect.Descriptor instead.
 func (*AddGoodRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{13}
+	return file_users_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *AddGoodRequest) GetUserId() int64 {
@@ -942,6 +1391,13 @@ func (x *AddGoodRequest) GetTypes() int64 {
 	return 0
 }
 
+func (x *AddGoodRequest) GetIsHot() int64 {
+	if x != nil {
+		return x.IsHot
+	}
+	return 0
+}
+
 func (x *AddGoodRequest) GetImage() []*Image {
 	if x != nil {
 		return x.Image
@@ -958,7 +1414,7 @@ type AddGoodResponse struct {
 
 func (x *AddGoodResponse) Reset() {
 	*x = AddGoodResponse{}
-	mi := &file_users_proto_msgTypes[14]
+	mi := &file_users_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -970,7 +1426,7 @@ func (x *AddGoodResponse) String() string {
 func (*AddGoodResponse) ProtoMessage() {}
 
 func (x *AddGoodResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[14]
+	mi := &file_users_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -983,7 +1439,7 @@ func (x *AddGoodResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddGoodResponse.ProtoReflect.Descriptor instead.
 func (*AddGoodResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{14}
+	return file_users_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *AddGoodResponse) GetSuccess() bool {
@@ -1002,7 +1458,7 @@ type SendSmsRequest struct {
 
 func (x *SendSmsRequest) Reset() {
 	*x = SendSmsRequest{}
-	mi := &file_users_proto_msgTypes[15]
+	mi := &file_users_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1014,7 +1470,7 @@ func (x *SendSmsRequest) String() string {
 func (*SendSmsRequest) ProtoMessage() {}
 
 func (x *SendSmsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[15]
+	mi := &file_users_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1027,7 +1483,7 @@ func (x *SendSmsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendSmsRequest.ProtoReflect.Descriptor instead.
 func (*SendSmsRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{15}
+	return file_users_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *SendSmsRequest) GetMobile() string {
@@ -1046,7 +1502,7 @@ type SendSmsResponse struct {
 
 func (x *SendSmsResponse) Reset() {
 	*x = SendSmsResponse{}
-	mi := &file_users_proto_msgTypes[16]
+	mi := &file_users_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1058,7 +1514,7 @@ func (x *SendSmsResponse) String() string {
 func (*SendSmsResponse) ProtoMessage() {}
 
 func (x *SendSmsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[16]
+	mi := &file_users_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1071,7 +1527,7 @@ func (x *SendSmsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendSmsResponse.ProtoReflect.Descriptor instead.
 func (*SendSmsResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{16}
+	return file_users_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *SendSmsResponse) GetSuccess() bool {
@@ -1094,7 +1550,7 @@ type MerchantLoginRequest struct {
 
 func (x *MerchantLoginRequest) Reset() {
 	*x = MerchantLoginRequest{}
-	mi := &file_users_proto_msgTypes[17]
+	mi := &file_users_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1106,7 +1562,7 @@ func (x *MerchantLoginRequest) String() string {
 func (*MerchantLoginRequest) ProtoMessage() {}
 
 func (x *MerchantLoginRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[17]
+	mi := &file_users_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1119,7 +1575,7 @@ func (x *MerchantLoginRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MerchantLoginRequest.ProtoReflect.Descriptor instead.
 func (*MerchantLoginRequest) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{17}
+	return file_users_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *MerchantLoginRequest) GetAccount() string {
@@ -1166,7 +1622,7 @@ type MerchantLoginResponse struct {
 
 func (x *MerchantLoginResponse) Reset() {
 	*x = MerchantLoginResponse{}
-	mi := &file_users_proto_msgTypes[18]
+	mi := &file_users_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1178,7 +1634,7 @@ func (x *MerchantLoginResponse) String() string {
 func (*MerchantLoginResponse) ProtoMessage() {}
 
 func (x *MerchantLoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_users_proto_msgTypes[18]
+	mi := &file_users_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1191,7 +1647,7 @@ func (x *MerchantLoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MerchantLoginResponse.ProtoReflect.Descriptor instead.
 func (*MerchantLoginResponse) Descriptor() ([]byte, []int) {
-	return file_users_proto_rawDescGZIP(), []int{18}
+	return file_users_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *MerchantLoginResponse) GetUserId() int64 {
@@ -1205,7 +1661,37 @@ var File_users_proto protoreflect.FileDescriptor
 
 const file_users_proto_rawDesc = "" +
 	"\n" +
-	"\vusers.proto\x12\x05users\"T\n" +
+	"\vusers.proto\x12\x05users\"B\n" +
+	"\fPurchaseGood\x12\x16\n" +
+	"\x06goodId\x18\x01 \x01(\x03R\x06goodId\x12\x1a\n" +
+	"\bQuantity\x18\x02 \x01(\x03R\bQuantity\"h\n" +
+	"\x13PurchaseGoodRequest\x129\n" +
+	"\rpurchaseGoods\x18\x01 \x03(\v2\x13.users.PurchaseGoodR\rpurchaseGoods\x12\x16\n" +
+	"\x06UserId\x18\x02 \x01(\x03R\x06UserId\"P\n" +
+	"\x14PurchaseGoodResponse\x12\x18\n" +
+	"\aorderNo\x18\x01 \x01(\tR\aorderNo\x12\x1e\n" +
+	"\n" +
+	"TotalPrice\x18\x02 \x01(\x02R\n" +
+	"TotalPrice\".\n" +
+	"\x14GoodsDetailedRequest\x12\x16\n" +
+	"\x06goodId\x18\x01 \x01(\x03R\x06goodId\"?\n" +
+	"\x15GoodsDetailedResponse\x12&\n" +
+	"\x05goods\x18\x01 \x01(\v2\x10.users.GoodsListR\x05goods\"\x8c\x01\n" +
+	"\x12SearchGoodsRequest\x12\x12\n" +
+	"\x04Name\x18\x01 \x01(\tR\x04Name\x12\x14\n" +
+	"\x05Types\x18\x02 \x01(\x03R\x05Types\x12\x1a\n" +
+	"\bMaxPrice\x18\x03 \x01(\x02R\bMaxPrice\x12\x1a\n" +
+	"\bMinPrice\x18\x04 \x01(\x02R\bMinPrice\x12\x14\n" +
+	"\x05Sales\x18\x05 \x01(\x03R\x05Sales\"K\n" +
+	"\x13SearchGoodsResponse\x124\n" +
+	"\vsearchGoods\x18\x01 \x03(\v2\x12.users.SearchGoodsR\vsearchGoods\"\x95\x01\n" +
+	"\vSearchGoods\x12\x18\n" +
+	"\aGoodsId\x18\x01 \x01(\x03R\aGoodsId\x12\x12\n" +
+	"\x04Name\x18\x02 \x01(\tR\x04Name\x12\x14\n" +
+	"\x05Price\x18\x03 \x01(\x02R\x05Price\x12\x14\n" +
+	"\x05Types\x18\x04 \x01(\x03R\x05Types\x12\x14\n" +
+	"\x05Sales\x18\x05 \x01(\x03R\x05Sales\x12\x16\n" +
+	"\x06Status\x18\x06 \x01(\x03R\x06Status\"T\n" +
 	"\x10OrderListRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x03R\x04page\x12\x12\n" +
 	"\x04size\x18\x02 \x01(\x03R\x04size\x12\x18\n" +
@@ -1271,7 +1757,7 @@ const file_users_proto_rawDesc = "" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"3\n" +
 	"\x05Image\x12\x10\n" +
 	"\x03Url\x18\x01 \x01(\tR\x03Url\x12\x18\n" +
-	"\aGoodsId\x18\x02 \x01(\tR\aGoodsId\"\xe0\x01\n" +
+	"\aGoodsId\x18\x02 \x01(\tR\aGoodsId\"\xf6\x01\n" +
 	"\x0eAddGoodRequest\x12\x16\n" +
 	"\x06UserId\x18\x01 \x01(\x03R\x06UserId\x12\x12\n" +
 	"\x04Name\x18\x02 \x01(\tR\x04Name\x12\x14\n" +
@@ -1279,7 +1765,8 @@ const file_users_proto_rawDesc = "" +
 	"\x06Status\x18\x04 \x01(\x03R\x06Status\x12 \n" +
 	"\vDescription\x18\x05 \x01(\tR\vDescription\x12\x18\n" +
 	"\aStockId\x18\x06 \x01(\x03R\aStockId\x12\x14\n" +
-	"\x05Types\x18\a \x01(\x03R\x05Types\x12\"\n" +
+	"\x05Types\x18\a \x01(\x03R\x05Types\x12\x14\n" +
+	"\x05IsHot\x18\t \x01(\x03R\x05IsHot\x12\"\n" +
 	"\x05Image\x18\b \x03(\v2\f.users.ImageR\x05Image\"+\n" +
 	"\x0fAddGoodResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"(\n" +
@@ -1294,7 +1781,7 @@ const file_users_proto_rawDesc = "" +
 	"\x04Code\x18\x04 \x01(\tR\x04Code\x12\x14\n" +
 	"\x05types\x18\x05 \x01(\x03R\x05types\"/\n" +
 	"\x15MerchantLoginResponse\x12\x16\n" +
-	"\x06userId\x18\x01 \x01(\x03R\x06userId2\x84\x04\n" +
+	"\x06userId\x18\x01 \x01(\x03R\x06userId2\xdf\x05\n" +
 	"\x05Users\x12J\n" +
 	"\rMerchantLogin\x12\x1b.users.MerchantLoginRequest\x1a\x1c.users.MerchantLoginResponse\x128\n" +
 	"\aSendSms\x12\x15.users.SendSmsRequest\x1a\x16.users.SendSmsResponse\x128\n" +
@@ -1303,7 +1790,10 @@ const file_users_proto_rawDesc = "" +
 	"\x05IsHot\x12\x13.users.IsHotRequest\x1a\x14.users.IsHotResponse\x12>\n" +
 	"\tGoodsList\x12\x17.users.GoodsListRequest\x1a\x18.users.GoodsListResponse\x12M\n" +
 	"\x0eUpStockMessage\x12\x1c.users.UpStockMessageRequest\x1a\x1d.users.UpStockMessageResponse\x12>\n" +
-	"\tOrderList\x12\x17.users.OrderListRequest\x1a\x18.users.OrderListResponseB\tZ\a./usersb\x06proto3"
+	"\tOrderList\x12\x17.users.OrderListRequest\x1a\x18.users.OrderListResponse\x12D\n" +
+	"\vSearchGoods\x12\x19.users.SearchGoodsRequest\x1a\x1a.users.SearchGoodsResponse\x12J\n" +
+	"\rGoodsDetailed\x12\x1b.users.GoodsDetailedRequest\x1a\x1c.users.GoodsDetailedResponse\x12G\n" +
+	"\fPurchaseGood\x12\x1a.users.PurchaseGoodRequest\x1a\x1b.users.PurchaseGoodResponseB\tZ\a./usersb\x06proto3"
 
 var (
 	file_users_proto_rawDescOnce sync.Once
@@ -1317,53 +1807,70 @@ func file_users_proto_rawDescGZIP() []byte {
 	return file_users_proto_rawDescData
 }
 
-var file_users_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_users_proto_msgTypes = make([]protoimpl.MessageInfo, 27)
 var file_users_proto_goTypes = []any{
-	(*OrderListRequest)(nil),       // 0: users.OrderListRequest
-	(*OrderListResponse)(nil),      // 1: users.OrderListResponse
-	(*OrderList)(nil),              // 2: users.OrderList
-	(*UpStockMessageRequest)(nil),  // 3: users.UpStockMessageRequest
-	(*UpStockMessageResponse)(nil), // 4: users.UpStockMessageResponse
-	(*GoodsListRequest)(nil),       // 5: users.GoodsListRequest
-	(*GoodsListResponse)(nil),      // 6: users.GoodsListResponse
-	(*GoodsList)(nil),              // 7: users.GoodsList
-	(*IsHotRequest)(nil),           // 8: users.IsHotRequest
-	(*IsHotResponse)(nil),          // 9: users.IsHotResponse
-	(*DelGoodRequest)(nil),         // 10: users.DelGoodRequest
-	(*DelGoodResponse)(nil),        // 11: users.DelGoodResponse
-	(*Image)(nil),                  // 12: users.Image
-	(*AddGoodRequest)(nil),         // 13: users.AddGoodRequest
-	(*AddGoodResponse)(nil),        // 14: users.AddGoodResponse
-	(*SendSmsRequest)(nil),         // 15: users.SendSmsRequest
-	(*SendSmsResponse)(nil),        // 16: users.SendSmsResponse
-	(*MerchantLoginRequest)(nil),   // 17: users.MerchantLoginRequest
-	(*MerchantLoginResponse)(nil),  // 18: users.MerchantLoginResponse
+	(*PurchaseGood)(nil),           // 0: users.PurchaseGood
+	(*PurchaseGoodRequest)(nil),    // 1: users.PurchaseGoodRequest
+	(*PurchaseGoodResponse)(nil),   // 2: users.PurchaseGoodResponse
+	(*GoodsDetailedRequest)(nil),   // 3: users.GoodsDetailedRequest
+	(*GoodsDetailedResponse)(nil),  // 4: users.GoodsDetailedResponse
+	(*SearchGoodsRequest)(nil),     // 5: users.SearchGoodsRequest
+	(*SearchGoodsResponse)(nil),    // 6: users.SearchGoodsResponse
+	(*SearchGoods)(nil),            // 7: users.SearchGoods
+	(*OrderListRequest)(nil),       // 8: users.OrderListRequest
+	(*OrderListResponse)(nil),      // 9: users.OrderListResponse
+	(*OrderList)(nil),              // 10: users.OrderList
+	(*UpStockMessageRequest)(nil),  // 11: users.UpStockMessageRequest
+	(*UpStockMessageResponse)(nil), // 12: users.UpStockMessageResponse
+	(*GoodsListRequest)(nil),       // 13: users.GoodsListRequest
+	(*GoodsListResponse)(nil),      // 14: users.GoodsListResponse
+	(*GoodsList)(nil),              // 15: users.GoodsList
+	(*IsHotRequest)(nil),           // 16: users.IsHotRequest
+	(*IsHotResponse)(nil),          // 17: users.IsHotResponse
+	(*DelGoodRequest)(nil),         // 18: users.DelGoodRequest
+	(*DelGoodResponse)(nil),        // 19: users.DelGoodResponse
+	(*Image)(nil),                  // 20: users.Image
+	(*AddGoodRequest)(nil),         // 21: users.AddGoodRequest
+	(*AddGoodResponse)(nil),        // 22: users.AddGoodResponse
+	(*SendSmsRequest)(nil),         // 23: users.SendSmsRequest
+	(*SendSmsResponse)(nil),        // 24: users.SendSmsResponse
+	(*MerchantLoginRequest)(nil),   // 25: users.MerchantLoginRequest
+	(*MerchantLoginResponse)(nil),  // 26: users.MerchantLoginResponse
 }
 var file_users_proto_depIdxs = []int32{
-	2,  // 0: users.OrderListResponse.orderList:type_name -> users.OrderList
-	7,  // 1: users.GoodsListResponse.userList:type_name -> users.GoodsList
-	12, // 2: users.AddGoodRequest.Image:type_name -> users.Image
-	17, // 3: users.Users.MerchantLogin:input_type -> users.MerchantLoginRequest
-	15, // 4: users.Users.SendSms:input_type -> users.SendSmsRequest
-	13, // 5: users.Users.AddGood:input_type -> users.AddGoodRequest
-	10, // 6: users.Users.DelGood:input_type -> users.DelGoodRequest
-	8,  // 7: users.Users.IsHot:input_type -> users.IsHotRequest
-	5,  // 8: users.Users.GoodsList:input_type -> users.GoodsListRequest
-	3,  // 9: users.Users.UpStockMessage:input_type -> users.UpStockMessageRequest
-	0,  // 10: users.Users.OrderList:input_type -> users.OrderListRequest
-	18, // 11: users.Users.MerchantLogin:output_type -> users.MerchantLoginResponse
-	16, // 12: users.Users.SendSms:output_type -> users.SendSmsResponse
-	14, // 13: users.Users.AddGood:output_type -> users.AddGoodResponse
-	11, // 14: users.Users.DelGood:output_type -> users.DelGoodResponse
-	9,  // 15: users.Users.IsHot:output_type -> users.IsHotResponse
-	6,  // 16: users.Users.GoodsList:output_type -> users.GoodsListResponse
-	4,  // 17: users.Users.UpStockMessage:output_type -> users.UpStockMessageResponse
-	1,  // 18: users.Users.OrderList:output_type -> users.OrderListResponse
-	11, // [11:19] is the sub-list for method output_type
-	3,  // [3:11] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	0,  // 0: users.PurchaseGoodRequest.purchaseGoods:type_name -> users.PurchaseGood
+	15, // 1: users.GoodsDetailedResponse.goods:type_name -> users.GoodsList
+	7,  // 2: users.SearchGoodsResponse.searchGoods:type_name -> users.SearchGoods
+	10, // 3: users.OrderListResponse.orderList:type_name -> users.OrderList
+	15, // 4: users.GoodsListResponse.userList:type_name -> users.GoodsList
+	20, // 5: users.AddGoodRequest.Image:type_name -> users.Image
+	25, // 6: users.Users.MerchantLogin:input_type -> users.MerchantLoginRequest
+	23, // 7: users.Users.SendSms:input_type -> users.SendSmsRequest
+	21, // 8: users.Users.AddGood:input_type -> users.AddGoodRequest
+	18, // 9: users.Users.DelGood:input_type -> users.DelGoodRequest
+	16, // 10: users.Users.IsHot:input_type -> users.IsHotRequest
+	13, // 11: users.Users.GoodsList:input_type -> users.GoodsListRequest
+	11, // 12: users.Users.UpStockMessage:input_type -> users.UpStockMessageRequest
+	8,  // 13: users.Users.OrderList:input_type -> users.OrderListRequest
+	5,  // 14: users.Users.SearchGoods:input_type -> users.SearchGoodsRequest
+	3,  // 15: users.Users.GoodsDetailed:input_type -> users.GoodsDetailedRequest
+	1,  // 16: users.Users.PurchaseGood:input_type -> users.PurchaseGoodRequest
+	26, // 17: users.Users.MerchantLogin:output_type -> users.MerchantLoginResponse
+	24, // 18: users.Users.SendSms:output_type -> users.SendSmsResponse
+	22, // 19: users.Users.AddGood:output_type -> users.AddGoodResponse
+	19, // 20: users.Users.DelGood:output_type -> users.DelGoodResponse
+	17, // 21: users.Users.IsHot:output_type -> users.IsHotResponse
+	14, // 22: users.Users.GoodsList:output_type -> users.GoodsListResponse
+	12, // 23: users.Users.UpStockMessage:output_type -> users.UpStockMessageResponse
+	9,  // 24: users.Users.OrderList:output_type -> users.OrderListResponse
+	6,  // 25: users.Users.SearchGoods:output_type -> users.SearchGoodsResponse
+	4,  // 26: users.Users.GoodsDetailed:output_type -> users.GoodsDetailedResponse
+	2,  // 27: users.Users.PurchaseGood:output_type -> users.PurchaseGoodResponse
+	17, // [17:28] is the sub-list for method output_type
+	6,  // [6:17] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_users_proto_init() }
@@ -1377,7 +1884,7 @@ func file_users_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_users_proto_rawDesc), len(file_users_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   27,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

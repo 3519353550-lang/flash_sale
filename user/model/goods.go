@@ -26,12 +26,12 @@ type Stocks struct {
 	gorm.Model
 	GoodsId      int64   `gorm:"type:int(11);not null;comment:商品ID"`
 	Stock        int64   `gorm:"type:int;not null;default:0;comment:库存"`
-	Supplier     string  `gorm:"type:varchar(30);not null;comment:供货商名称"`                 //供货商
+	Supplier     string  `gorm:"type:varchar(30);not null;comment:供货商名称"`                //供货商
 	StockNum     int64   `gorm:"type:int;not null;default:0;comment:库存数量"`                //库存数量
-	StockAddress string  `gorm:"type:varchar(200);not null;comment:库存物品位置"`               //库存物品位置//
-	StockUnit    string  `gorm:"type:varchar(30);not null;comment:商品单位"`                  //商品单位//
-	StockPrice   float64 `gorm:"type:decimal(10,2);not null;comment:售价"`                  //	价格
-	StockStatus  int64   `gorm:"type:tinyint;not null;default:1;index;comment:1-上架 0-下架"` // `库存状态"`
+	StockAddress string  `gorm:"type:varchar(200);not null;comment:库存物品位置"`             //库存物品位置
+	StockUnit    string  `gorm:"type:varchar(30);not null;comment:商品单位"`                  //商品单位
+	StockPrice   float64 `gorm:"type:decimal(10,2);not null;comment:售价"`                    //价格
+	StockStatus  int64   `gorm:"type:tinyint;not null;default:1;index;comment:1-上架 0-下架"` //库存状态"`
 }
 
 func (s *Stocks) FindStockById(db *gorm.DB, id int64, id2 int64) error {
@@ -95,6 +95,29 @@ func (g *Goods) GoodsList(db *gorm.DB, list []*users.GoodsList, in *users.GoodsL
 		"`stocks`.`stock_status`").
 		Joins("JOIN stocks ON stocks.id = goods.stock_id").
 		Scopes(pkg.Paginate(int(in.Page), int(in.Size))).
+		Find(&list)
+	return list
+}
+
+func (g *Goods) GoodsDetailed(db *gorm.DB, list *users.GoodsList, in *users.GoodsDetailedRequest) *users.GoodsList {
+	db.Model(&Goods{}).Select(
+		"`goods`.`user_id`",
+		"`goods`.`name`",
+		"`goods`.`price`",
+		"`goods`.`status`",
+		"`goods`.`description`",
+		"`goods`.`stock_id`",
+		"`goods`.`types`",
+		"`goods`.`is_hot`",
+		"`stocks`.`stock`",
+		"`stocks`.`supplier`",
+		"`stocks`.`stock_num`",
+		"`stocks`.`stock_address`",
+		"`stocks`.`stock_unit`",
+		"`stocks`.`stock_price`",
+		"`stocks`.`stock_status`").
+		Joins("JOIN stocks ON stocks.id = goods.stock_id").
+		Where("goods.id = ?", in.GoodId).
 		Find(&list)
 	return list
 }

@@ -62,3 +62,18 @@ func (s *UsersServer) OrderList(ctx context.Context, in *users.OrderListRequest)
 	l := logic.NewOrderListLogic(ctx, s.svcCtx)
 	return l.OrderList(in)
 }
+
+func (s *UsersServer) SearchGoods(ctx context.Context, in *users.SearchGoodsRequest) (*users.SearchGoodsResponse, error) {
+	l := logic.NewSearchGoodsLogic(ctx, s.svcCtx)
+	return l.SearchGoods(in)
+}
+
+func (s *UsersServer) GoodsDetailed(ctx context.Context, in *users.GoodsDetailedRequest) (*users.GoodsDetailedResponse, error) {
+	l := logic.NewGoodsDetailedLogic(ctx, s.svcCtx)
+	return l.GoodsDetailed(in)
+}
+
+func (s *UsersServer) PurchaseGood(ctx context.Context, in *users.PurchaseGoodRequest) (*users.PurchaseGoodResponse, error) {
+	l := logic.NewPurchaseGoodLogic(ctx, s.svcCtx)
+	return l.PurchaseGood(in)
+}

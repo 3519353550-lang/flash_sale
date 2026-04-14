@@ -19,6 +19,10 @@ type DelGoodRequest struct {
 	GoodsId int64 `json:"goodsId"`
 }
 
+type GoodsDetailedRequest struct {
+	GoodsId int64 `json:"goodsId"`
+}
+
 type GoodsListRequest struct {
 	Page int64 `json:"page"`
 	Size int64 `json:"size"`
@@ -52,6 +56,14 @@ type Response struct {
 	Data interface{} `json:"data"`
 	Code int64       `json:"code"`
 	Msg  string      `json:"msg"`
+}
+
+type SearchGoodsRequest struct {
+	Name     string  `json:"name,optional"`     // 非必填
+	Types    int64   `json:"types,optional"`    // 非必填
+	MaxPrice float64 `json:"maxPrice,optional"` // 非必填
+	MinPrice float64 `json:"minPrice,optional"` // 非必填
+	Sales    int64   `json:"sales,optional"`    // 非必填
 }
 
 type SendSmsRequest struct {

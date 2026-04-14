@@ -31,6 +31,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			},
 			{
 				Method:  http.MethodPost,
+				Path:    "/goodsDetailed",
+				Handler: GoodsDetailedHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
 				Path:    "/is/hot",
 				Handler: IsHotHandler(serverCtx),
 			},
@@ -43,6 +48,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPost,
 				Path:    "/orderList",
 				Handler: OrderListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPost,
+				Path:    "/searchGoods",
+				Handler: SearchGoodsHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodPost,

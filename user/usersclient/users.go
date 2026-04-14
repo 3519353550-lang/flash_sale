@@ -18,6 +18,8 @@ type (
 	AddGoodResponse        = users.AddGoodResponse
 	DelGoodRequest         = users.DelGoodRequest
 	DelGoodResponse        = users.DelGoodResponse
+	GoodsDetailedRequest   = users.GoodsDetailedRequest
+	GoodsDetailedResponse  = users.GoodsDetailedResponse
 	GoodsList              = users.GoodsList
 	GoodsListRequest       = users.GoodsListRequest
 	GoodsListResponse      = users.GoodsListResponse
@@ -29,6 +31,12 @@ type (
 	OrderList              = users.OrderList
 	OrderListRequest       = users.OrderListRequest
 	OrderListResponse      = users.OrderListResponse
+	PurchaseGood           = users.PurchaseGood
+	PurchaseGoodRequest    = users.PurchaseGoodRequest
+	PurchaseGoodResponse   = users.PurchaseGoodResponse
+	SearchGoods            = users.SearchGoods
+	SearchGoodsRequest     = users.SearchGoodsRequest
+	SearchGoodsResponse    = users.SearchGoodsResponse
 	SendSmsRequest         = users.SendSmsRequest
 	SendSmsResponse        = users.SendSmsResponse
 	UpStockMessageRequest  = users.UpStockMessageRequest
@@ -43,6 +51,9 @@ type (
 		GoodsList(ctx context.Context, in *GoodsListRequest, opts ...grpc.CallOption) (*GoodsListResponse, error)
 		UpStockMessage(ctx context.Context, in *UpStockMessageRequest, opts ...grpc.CallOption) (*UpStockMessageResponse, error)
 		OrderList(ctx context.Context, in *OrderListRequest, opts ...grpc.CallOption) (*OrderListResponse, error)
+		SearchGoods(ctx context.Context, in *SearchGoodsRequest, opts ...grpc.CallOption) (*SearchGoodsResponse, error)
+		GoodsDetailed(ctx context.Context, in *GoodsDetailedRequest, opts ...grpc.CallOption) (*GoodsDetailedResponse, error)
+		PurchaseGood(ctx context.Context, in *PurchaseGoodRequest, opts ...grpc.CallOption) (*PurchaseGoodResponse, error)
 	}
 
 	defaultUsers struct {
@@ -94,4 +105,19 @@ func (m *defaultUsers) UpStockMessage(ctx context.Context, in *UpStockMessageReq
 func (m *defaultUsers) OrderList(ctx context.Context, in *OrderListRequest, opts ...grpc.CallOption) (*OrderListResponse, error) {
 	client := users.NewUsersClient(m.cli.Conn())
 	return client.OrderList(ctx, in, opts...)
+}
+
+func (m *defaultUsers) SearchGoods(ctx context.Context, in *SearchGoodsRequest, opts ...grpc.CallOption) (*SearchGoodsResponse, error) {
+	client := users.NewUsersClient(m.cli.Conn())
+	return client.SearchGoods(ctx, in, opts...)
+}
+
+func (m *defaultUsers) GoodsDetailed(ctx context.Context, in *GoodsDetailedRequest, opts ...grpc.CallOption) (*GoodsDetailedResponse, error) {
+	client := users.NewUsersClient(m.cli.Conn())
+	return client.GoodsDetailed(ctx, in, opts...)
+}
+
+func (m *defaultUsers) PurchaseGood(ctx context.Context, in *PurchaseGoodRequest, opts ...grpc.CallOption) (*PurchaseGoodResponse, error) {
+	client := users.NewUsersClient(m.cli.Conn())
+	return client.PurchaseGood(ctx, in, opts...)
 }

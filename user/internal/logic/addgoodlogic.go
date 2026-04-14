@@ -29,7 +29,6 @@ func NewAddGoodLogic(ctx context.Context, svcCtx *svc.ServiceContext) *AddGoodLo
 func (l *AddGoodLogic) AddGood(in *users.AddGoodRequest) (*users.AddGoodResponse, error) {
 	// todo: add your logic here and delete this line
 	if in.UserId == 0 ||
-		in.Status == 0 ||
 		in.Price == 0.0 ||
 		in.StockId == 0 ||
 		in.Description == "" {
@@ -37,7 +36,6 @@ func (l *AddGoodLogic) AddGood(in *users.AddGoodRequest) (*users.AddGoodResponse
 	}
 	var m []*model.Image
 	goods := model.Goods{
-		//Model:       gorm.Model{},
 		UserId:      in.UserId,
 		Name:        in.Name,
 		Price:       float64(in.Price),
@@ -45,6 +43,7 @@ func (l *AddGoodLogic) AddGood(in *users.AddGoodRequest) (*users.AddGoodResponse
 		Description: in.Description,
 		StockId:     in.StockId,
 		Types:       in.Types,
+		IsHot:       in.IsHot,
 	}
 
 	if err := goods.AddGood(configs.DB); err != nil {
@@ -70,6 +69,7 @@ func (l *AddGoodLogic) AddGood(in *users.AddGoodRequest) (*users.AddGoodResponse
 		"description": goods.Description,
 		"stock_id":    goods.StockId,
 		"types":       goods.Types,
+		"is_hot":      goods.IsHot,
 	}
 	_, err := configs.Esc.Index().
 		Index("goods").

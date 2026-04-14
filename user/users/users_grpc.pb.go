@@ -27,6 +27,9 @@ const (
 	Users_GoodsList_FullMethodName      = "/users.Users/GoodsList"
 	Users_UpStockMessage_FullMethodName = "/users.Users/UpStockMessage"
 	Users_OrderList_FullMethodName      = "/users.Users/OrderList"
+	Users_SearchGoods_FullMethodName    = "/users.Users/SearchGoods"
+	Users_GoodsDetailed_FullMethodName  = "/users.Users/GoodsDetailed"
+	Users_PurchaseGood_FullMethodName   = "/users.Users/PurchaseGood"
 )
 
 // UsersClient is the client API for Users service.
@@ -41,6 +44,9 @@ type UsersClient interface {
 	GoodsList(ctx context.Context, in *GoodsListRequest, opts ...grpc.CallOption) (*GoodsListResponse, error)
 	UpStockMessage(ctx context.Context, in *UpStockMessageRequest, opts ...grpc.CallOption) (*UpStockMessageResponse, error)
 	OrderList(ctx context.Context, in *OrderListRequest, opts ...grpc.CallOption) (*OrderListResponse, error)
+	SearchGoods(ctx context.Context, in *SearchGoodsRequest, opts ...grpc.CallOption) (*SearchGoodsResponse, error)
+	GoodsDetailed(ctx context.Context, in *GoodsDetailedRequest, opts ...grpc.CallOption) (*GoodsDetailedResponse, error)
+	PurchaseGood(ctx context.Context, in *PurchaseGoodRequest, opts ...grpc.CallOption) (*PurchaseGoodResponse, error)
 }
 
 type usersClient struct {
@@ -131,6 +137,36 @@ func (c *usersClient) OrderList(ctx context.Context, in *OrderListRequest, opts 
 	return out, nil
 }
 
+func (c *usersClient) SearchGoods(ctx context.Context, in *SearchGoodsRequest, opts ...grpc.CallOption) (*SearchGoodsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SearchGoodsResponse)
+	err := c.cc.Invoke(ctx, Users_SearchGoods_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usersClient) GoodsDetailed(ctx context.Context, in *GoodsDetailedRequest, opts ...grpc.CallOption) (*GoodsDetailedResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GoodsDetailedResponse)
+	err := c.cc.Invoke(ctx, Users_GoodsDetailed_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *usersClient) PurchaseGood(ctx context.Context, in *PurchaseGoodRequest, opts ...grpc.CallOption) (*PurchaseGoodResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PurchaseGoodResponse)
+	err := c.cc.Invoke(ctx, Users_PurchaseGood_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UsersServer is the server API for Users service.
 // All implementations must embed UnimplementedUsersServer
 // for forward compatibility.
@@ -143,6 +179,9 @@ type UsersServer interface {
 	GoodsList(context.Context, *GoodsListRequest) (*GoodsListResponse, error)
 	UpStockMessage(context.Context, *UpStockMessageRequest) (*UpStockMessageResponse, error)
 	OrderList(context.Context, *OrderListRequest) (*OrderListResponse, error)
+	SearchGoods(context.Context, *SearchGoodsRequest) (*SearchGoodsResponse, error)
+	GoodsDetailed(context.Context, *GoodsDetailedRequest) (*GoodsDetailedResponse, error)
+	PurchaseGood(context.Context, *PurchaseGoodRequest) (*PurchaseGoodResponse, error)
 	mustEmbedUnimplementedUsersServer()
 }
 
@@ -176,6 +215,15 @@ func (UnimplementedUsersServer) UpStockMessage(context.Context, *UpStockMessageR
 }
 func (UnimplementedUsersServer) OrderList(context.Context, *OrderListRequest) (*OrderListResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method OrderList not implemented")
+}
+func (UnimplementedUsersServer) SearchGoods(context.Context, *SearchGoodsRequest) (*SearchGoodsResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SearchGoods not implemented")
+}
+func (UnimplementedUsersServer) GoodsDetailed(context.Context, *GoodsDetailedRequest) (*GoodsDetailedResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GoodsDetailed not implemented")
+}
+func (UnimplementedUsersServer) PurchaseGood(context.Context, *PurchaseGoodRequest) (*PurchaseGoodResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PurchaseGood not implemented")
 }
 func (UnimplementedUsersServer) mustEmbedUnimplementedUsersServer() {}
 func (UnimplementedUsersServer) testEmbeddedByValue()               {}
@@ -342,6 +390,60 @@ func _Users_OrderList_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Users_SearchGoods_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchGoodsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsersServer).SearchGoods(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Users_SearchGoods_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsersServer).SearchGoods(ctx, req.(*SearchGoodsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Users_GoodsDetailed_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GoodsDetailedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsersServer).GoodsDetailed(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Users_GoodsDetailed_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsersServer).GoodsDetailed(ctx, req.(*GoodsDetailedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Users_PurchaseGood_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PurchaseGoodRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsersServer).PurchaseGood(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Users_PurchaseGood_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsersServer).PurchaseGood(ctx, req.(*PurchaseGoodRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Users_ServiceDesc is the grpc.ServiceDesc for Users service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -380,6 +482,18 @@ var Users_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "OrderList",
 			Handler:    _Users_OrderList_Handler,
+		},
+		{
+			MethodName: "SearchGoods",
+			Handler:    _Users_SearchGoods_Handler,
+		},
+		{
+			MethodName: "GoodsDetailed",
+			Handler:    _Users_GoodsDetailed_Handler,
+		},
+		{
+			MethodName: "PurchaseGood",
+			Handler:    _Users_PurchaseGood_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

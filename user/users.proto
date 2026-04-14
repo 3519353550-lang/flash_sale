@@ -12,8 +12,50 @@ service Users {
   rpc GoodsList(GoodsListRequest) returns(GoodsListResponse);
   rpc UpStockMessage(UpStockMessageRequest) returns(UpStockMessageResponse);
   rpc OrderList(OrderListRequest) returns(OrderListResponse);
+  rpc SearchGoods(SearchGoodsRequest) returns(SearchGoodsResponse);
+  rpc GoodsDetailed(GoodsDetailedRequest) returns(GoodsDetailedResponse);
+  rpc PurchaseGood(PurchaseGoodRequest) returns(PurchaseGoodResponse);
+}
+message PurchaseGood {
+  int64 goodId = 1;
+  int64 Quantity = 2;
+}
+message PurchaseGoodRequest {
+  repeated PurchaseGood purchaseGoods = 1;
+  int64 UserId = 2;
 }
 
+message PurchaseGoodResponse {
+  string orderNo = 1;
+  float TotalPrice = 2;
+}
+message GoodsDetailedRequest {
+  int64 goodId = 1;
+}
+
+message GoodsDetailedResponse {
+ GoodsList goods = 1;
+}
+message SearchGoodsRequest {
+ string Name =1;
+ int64 Types =2;
+ float MaxPrice =3;
+ float MinPrice =4;
+ int64 Sales =5;
+}
+
+message SearchGoodsResponse {
+  repeated SearchGoods searchGoods = 1;
+}
+message SearchGoods {
+  int64 GoodsId = 1;
+  string Name = 2;
+  float Price = 3;
+  int64 Types = 4;
+  int64 Sales = 5;
+  int64 Status = 6;
+
+}
 message OrderListRequest {
   int64 page = 1;
   int64 size = 2;
@@ -101,6 +143,7 @@ message AddGoodRequest {
   string Description= 5;
   int64  StockId= 6;
   int64  Types= 7;
+  int64  IsHot= 9;
  repeated Image Image= 8;
 }
 

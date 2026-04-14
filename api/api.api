@@ -68,7 +68,25 @@ type OrderListRequest {
 	orderNo string `json:"orderNo"`
 }
 
+type SearchGoodsRequest {
+	name     string  `json:"name,optional"` // 非必填
+	types    int64   `json:"types,optional"` // 非必填
+	maxPrice float64 `json:"maxPrice,optional"` // 非必填
+	minPrice float64 `json:"minPrice,optional"` // 非必填
+	sales    int64   `json:"sales,optional"` // 非必填
+}
+
+type GoodsDetailedRequest {
+	GoodsId int64 `json:"goodsId"`
+}
+
 service api {
+	@handler GoodsDetailed // TODO: set handler name and delete this comment
+	post /goodsDetailed (GoodsDetailedRequest) returns (Response)
+
+	@handler SearchGoods // TODO: set handler name and delete this comment
+	post /searchGoods (SearchGoodsRequest) returns (Response)
+
 	@handler OrderList // TODO: set handler name and delete this comment
 	post /orderList (OrderListRequest) returns (Response)
 
