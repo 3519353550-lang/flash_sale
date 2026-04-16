@@ -35,7 +35,7 @@ func (l *SendSmsLogic) SendSms(in *users.SendSmsRequest) (*users.SendSmsResponse
 	//	return nil, errors.New("手机号格式错误")
 	//}
 	data, _ := configs.Rdb.Get(l.ctx, "sms:"+in.Mobile).Int()
-	if data >= 1 {
+	if data >= 3 {
 		return nil, errors.New("短信发送频率过快")
 	}
 
@@ -43,7 +43,7 @@ func (l *SendSmsLogic) SendSms(in *users.SendSmsRequest) (*users.SendSmsResponse
 
 	sms, err := pkg.SendSms(in.Mobile, strconv.Itoa(code))
 	if err != nil {
-		
+
 		return nil, err
 	}
 	if sms.Code != 2 {
@@ -51,7 +51,7 @@ func (l *SendSmsLogic) SendSms(in *users.SendSmsRequest) (*users.SendSmsResponse
 	}
 
 	configs.Rdb.Set(l.ctx, in.Mobile, code, 5*time.Minute)
-	configs.Rdb.Set(l.ctx, "sms:"+in.Mobile, 1, 1*time.Minute)
+	configs.Rdb.Set(l.ctx, "sms:"+in.Mobile, 3, 1*time.Minute)
 
 	return &users.SendSmsResponse{Success: true}, nil
 }

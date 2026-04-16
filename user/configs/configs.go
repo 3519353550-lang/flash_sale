@@ -37,4 +37,10 @@ type Configs struct {
 	Elastic struct {
 		Host string
 	}
+	AilPay struct {
+		AppId      string
+		PrivateKey string
+		NotifyUrl  string
+		ReturnUrl  string
+	}
 }

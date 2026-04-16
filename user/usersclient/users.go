@@ -31,6 +31,8 @@ type (
 	OrderList              = users.OrderList
 	OrderListRequest       = users.OrderListRequest
 	OrderListResponse      = users.OrderListResponse
+	PayOrderRequest        = users.PayOrderRequest
+	PayOrderResponse       = users.PayOrderResponse
 	PurchaseGood           = users.PurchaseGood
 	PurchaseGoodRequest    = users.PurchaseGoodRequest
 	PurchaseGoodResponse   = users.PurchaseGoodResponse
@@ -54,6 +56,7 @@ type (
 		SearchGoods(ctx context.Context, in *SearchGoodsRequest, opts ...grpc.CallOption) (*SearchGoodsResponse, error)
 		GoodsDetailed(ctx context.Context, in *GoodsDetailedRequest, opts ...grpc.CallOption) (*GoodsDetailedResponse, error)
 		PurchaseGood(ctx context.Context, in *PurchaseGoodRequest, opts ...grpc.CallOption) (*PurchaseGoodResponse, error)
+		PayOrder(ctx context.Context, in *PayOrderRequest, opts ...grpc.CallOption) (*PayOrderResponse, error)
 	}
 
 	defaultUsers struct {
@@ -120,4 +123,9 @@ func (m *defaultUsers) GoodsDetailed(ctx context.Context, in *GoodsDetailedReque
 func (m *defaultUsers) PurchaseGood(ctx context.Context, in *PurchaseGoodRequest, opts ...grpc.CallOption) (*PurchaseGoodResponse, error) {
 	client := users.NewUsersClient(m.cli.Conn())
 	return client.PurchaseGood(ctx, in, opts...)
+}
+
+func (m *defaultUsers) PayOrder(ctx context.Context, in *PayOrderRequest, opts ...grpc.CallOption) (*PayOrderResponse, error) {
+	client := users.NewUsersClient(m.cli.Conn())
+	return client.PayOrder(ctx, in, opts...)
 }

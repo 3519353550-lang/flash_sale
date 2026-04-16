@@ -77,3 +77,8 @@ func (s *UsersServer) PurchaseGood(ctx context.Context, in *users.PurchaseGoodRe
 	l := logic.NewPurchaseGoodLogic(ctx, s.svcCtx)
 	return l.PurchaseGood(in)
 }
+
+func (s *UsersServer) PayOrder(ctx context.Context, in *users.PayOrderRequest) (*users.PayOrderResponse, error) {
+	l := logic.NewPayOrderLogic(ctx, s.svcCtx)
+	return l.PayOrder(in)
+}

@@ -26,11 +26,11 @@ type Stocks struct {
 	gorm.Model
 	GoodsId      int64   `gorm:"type:int(11);not null;comment:商品ID"`
 	Stock        int64   `gorm:"type:int;not null;default:0;comment:库存"`
-	Supplier     string  `gorm:"type:varchar(30);not null;comment:供货商名称"`                //供货商
+	Supplier     string  `gorm:"type:varchar(30);not null;comment:供货商名称"`                 //供货商
 	StockNum     int64   `gorm:"type:int;not null;default:0;comment:库存数量"`                //库存数量
-	StockAddress string  `gorm:"type:varchar(200);not null;comment:库存物品位置"`             //库存物品位置
+	StockAddress string  `gorm:"type:varchar(200);not null;comment:库存物品位置"`               //库存物品位置
 	StockUnit    string  `gorm:"type:varchar(30);not null;comment:商品单位"`                  //商品单位
-	StockPrice   float64 `gorm:"type:decimal(10,2);not null;comment:售价"`                    //价格
+	StockPrice   float64 `gorm:"type:decimal(10,2);not null;comment:售价"`                  //价格
 	StockStatus  int64   `gorm:"type:tinyint;not null;default:1;index;comment:1-上架 0-下架"` //库存状态"`
 }
 
@@ -40,6 +40,10 @@ func (s *Stocks) FindStockById(db *gorm.DB, id int64, id2 int64) error {
 
 func (s *Stocks) UpStockMessage(db *gorm.DB, in *users.UpStockMessageRequest) error {
 	return db.Debug().Save(s).Error
+}
+
+func (s *Stocks) FindStocksById(db *gorm.DB, id int64) error {
+	return db.Where("goods_id = ?", id).First(s).Error
 }
 
 func (g *Goods) AddGood(db *gorm.DB) error {
@@ -120,4 +124,8 @@ func (g *Goods) GoodsDetailed(db *gorm.DB, list *users.GoodsList, in *users.Good
 		Where("goods.id = ?", in.GoodId).
 		Find(&list)
 	return list
+}
+
+func (g *Goods) FindGoodsById(db *gorm.DB, id int64) error {
+	return db.Where("id = ?", id).First(g).Error
 }

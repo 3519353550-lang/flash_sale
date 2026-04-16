@@ -30,6 +30,7 @@ const (
 	Users_SearchGoods_FullMethodName    = "/users.Users/SearchGoods"
 	Users_GoodsDetailed_FullMethodName  = "/users.Users/GoodsDetailed"
 	Users_PurchaseGood_FullMethodName   = "/users.Users/PurchaseGood"
+	Users_PayOrder_FullMethodName       = "/users.Users/PayOrder"
 )
 
 // UsersClient is the client API for Users service.
@@ -47,6 +48,7 @@ type UsersClient interface {
 	SearchGoods(ctx context.Context, in *SearchGoodsRequest, opts ...grpc.CallOption) (*SearchGoodsResponse, error)
 	GoodsDetailed(ctx context.Context, in *GoodsDetailedRequest, opts ...grpc.CallOption) (*GoodsDetailedResponse, error)
 	PurchaseGood(ctx context.Context, in *PurchaseGoodRequest, opts ...grpc.CallOption) (*PurchaseGoodResponse, error)
+	PayOrder(ctx context.Context, in *PayOrderRequest, opts ...grpc.CallOption) (*PayOrderResponse, error)
 }
 
 type usersClient struct {
@@ -167,6 +169,16 @@ func (c *usersClient) PurchaseGood(ctx context.Context, in *PurchaseGoodRequest,
 	return out, nil
 }
 
+func (c *usersClient) PayOrder(ctx context.Context, in *PayOrderRequest, opts ...grpc.CallOption) (*PayOrderResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(PayOrderResponse)
+	err := c.cc.Invoke(ctx, Users_PayOrder_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UsersServer is the server API for Users service.
 // All implementations must embed UnimplementedUsersServer
 // for forward compatibility.
@@ -182,6 +194,7 @@ type UsersServer interface {
 	SearchGoods(context.Context, *SearchGoodsRequest) (*SearchGoodsResponse, error)
 	GoodsDetailed(context.Context, *GoodsDetailedRequest) (*GoodsDetailedResponse, error)
 	PurchaseGood(context.Context, *PurchaseGoodRequest) (*PurchaseGoodResponse, error)
+	PayOrder(context.Context, *PayOrderRequest) (*PayOrderResponse, error)
 	mustEmbedUnimplementedUsersServer()
 }
 
@@ -224,6 +237,9 @@ func (UnimplementedUsersServer) GoodsDetailed(context.Context, *GoodsDetailedReq
 }
 func (UnimplementedUsersServer) PurchaseGood(context.Context, *PurchaseGoodRequest) (*PurchaseGoodResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method PurchaseGood not implemented")
+}
+func (UnimplementedUsersServer) PayOrder(context.Context, *PayOrderRequest) (*PayOrderResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method PayOrder not implemented")
 }
 func (UnimplementedUsersServer) mustEmbedUnimplementedUsersServer() {}
 func (UnimplementedUsersServer) testEmbeddedByValue()               {}
@@ -444,6 +460,24 @@ func _Users_PurchaseGood_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Users_PayOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PayOrderRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UsersServer).PayOrder(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Users_PayOrder_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UsersServer).PayOrder(ctx, req.(*PayOrderRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Users_ServiceDesc is the grpc.ServiceDesc for Users service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -494,6 +528,10 @@ var Users_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "PurchaseGood",
 			Handler:    _Users_PurchaseGood_Handler,
+		},
+		{
+			MethodName: "PayOrder",
+			Handler:    _Users_PayOrder_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

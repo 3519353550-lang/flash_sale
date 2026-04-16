@@ -4,7 +4,7 @@ import "gorm.io/gorm"
 
 type User struct {
 	gorm.Model
-	Username string `gorm:"type:varchar(30);not null;comment:用户名"`
+	Username string `gorm:"type:varchar(30);uniqueIndex;not null;comment:用户名"`
 	Account  string `gorm:"type:varchar(30);not null;comment:账号"`
 	Password string `gorm:"type:varchar(32);not null;comment:密码"`
 	Mobile   string `gorm:"type:varchar(11);not null;comment:手机号"`

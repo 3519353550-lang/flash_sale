@@ -6,6 +6,11 @@ import (
 	"zgw/ks/flash_sale/user/configs"
 )
 
+/*
+ 预热库存
+ 从数据库中查询所有商品库存,先清空Redis队列，将库存数量转换为Redis队列中的元素数量
+*/
+
 func PreheatStock() {
 	// 1. 检查数据库连接是否初始化
 	if configs.DB == nil {
@@ -18,6 +23,7 @@ func PreheatStock() {
 		fmt.Println("Redis connection not initialized")
 		return
 	}
+
 	rows, err := configs.DB.Raw("SELECT goods_id,stock_num FROM stocks").Rows()
 	if err != nil {
 		// 查询失败时直接返回，不进行后续操作
@@ -40,7 +46,7 @@ func PreheatStock() {
 		configs.Rdb.Del(context.Background(), key)
 
 		for i := 0; i < stockNum; i++ {
-			configs.Rdb.LPush(context.Background(), key, "1")
+			ReleaseStock(goodsId)
 		}
 
 	}

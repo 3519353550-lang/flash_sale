@@ -41,6 +41,10 @@ func (o *Orders) OrderList(db *gorm.DB, list []*users.OrderList, in *users.Order
 	return list
 }
 
+func (o *Orders) FindOrderByOrderNo(db *gorm.DB, no string) error {
+	return db.Where("order_no = ?", no).First(&o).Error
+}
+
 type OrderItem struct {
 	gorm.Model
 	OrderID      int64   `gorm:"type:bigint;not null;index;comment:订单ID"`

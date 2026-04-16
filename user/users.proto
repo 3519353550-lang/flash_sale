@@ -15,7 +15,16 @@ service Users {
   rpc SearchGoods(SearchGoodsRequest) returns(SearchGoodsResponse);
   rpc GoodsDetailed(GoodsDetailedRequest) returns(GoodsDetailedResponse);
   rpc PurchaseGood(PurchaseGoodRequest) returns(PurchaseGoodResponse);
+  rpc PayOrder(PayOrderRequest) returns(PayOrderResponse);
+  
 }
+message PayOrderRequest {
+ string orderNo = 1;
+}
+message PayOrderResponse {
+  bool success = 1;
+}
+
 message PurchaseGood {
   int64 goodId = 1;
   int64 Quantity = 2;

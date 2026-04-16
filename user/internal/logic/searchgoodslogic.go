@@ -106,6 +106,7 @@ func (l *SearchGoodsLogic) SearchGoods(in *users.SearchGoodsRequest) (*users.Sea
 
 		list = append(list, &goods)
 	}
+
 	return &users.SearchGoodsResponse{
 		SearchGoods: list,
 	}, nil
